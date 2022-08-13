@@ -1,6 +1,7 @@
 import './App.css';
 import Teste from './components/Test';
 import Forms from './components/Forms'
+import ListAddresses from './components/ListAddresses.js'
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
     Hello World!
     <Teste/>
     <Forms />
+    <ListAddresses />
     </>
   );
 }
