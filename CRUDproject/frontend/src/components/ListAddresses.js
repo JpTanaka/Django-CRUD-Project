@@ -3,6 +3,7 @@ import CardAddress from './Card';
 
 function ListAddresses(props) {
     const [listaddresses, setListAddresses] = useState([]);
+    
     // UseEffect for updating when database changes.
     useEffect (() => {
         console.log("useEffect ListAddresses")
@@ -34,33 +35,16 @@ function ListAddresses(props) {
           method: "DELETE",
         });
         if (res.status === 204) {
-          console.log("Deleted card " )
           props.setCount(count => count+1);
         } else {
           console.log(res.status);
         }
-      } catch (err) {
-          
+      } catch (err) {      
         console.log(err);
       }
-
     };
-  //   function makePOSTRequest(id) {
-  //     const requestOptions = {
-  //         method: 'DELETE',
-  //         headers: {'Content-Type':'application/json'},
-  //         body: JSON.stringify({
-  //             pk: id
-  //         }
-  //         )
 
-  //     };
-  //     fetch('http://localhost:8000/api/list', requestOptions).then((response) =>
-  //     response.json()
-  //     ).then((data)=> console.log(data));
-  // }
-
-    const listcards = listaddresses.map((address) => (
+    const listcards = listaddresses.slice(0).reverse().map((address) => (
       <div className="cards-container">
         <CardAddress address = {address} key = {address[0]} handleDelete = {handleDelete}/>
       </div>

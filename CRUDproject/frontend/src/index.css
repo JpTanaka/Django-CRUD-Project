@@ -21,29 +21,24 @@ code {
 .text-content {
   display: flex;
   flex-direction: column;
+  width: max-content;
 }
 
 .content-container {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
+  width: max(350px, 100%);
   align-items: center;
 }
 
-.number {
-  align-self: center;
-  position: absolute;
-  bottom: 20px;
-}
-.title-cep {
+.cep-title {
   font-weight: 500;
   font-size: medium;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-bottom: 5px;
 }
+
 .title-page {
   display: flex;
   font-size: x-large;
@@ -58,11 +53,8 @@ code {
 
 }
 
-.container-page {
 
-}
-
-/* CSS */
+/* Customized button for submit */
 .button-9 {
   appearance: button;
   backface-visibility: hidden;
@@ -99,18 +91,21 @@ code {
 .button-9:focus {
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
-
-.submit-button {
-
+.button-9:hover {
+  border-width: 1px;
+  border-radius: 1px;
 }
+
+
+fieldset{
+  border-width: 0px;
+}
+
 .forms {
+  width: max(350px, 100%);
   padding:5px;
 }
 
-
-.delete-button {
-
-}
 
 .cards-container {
   display: flex;
@@ -119,8 +114,7 @@ code {
 
 }
 
-
-/* CSS */
+/* Customized button for delete */
 .button-80 {
   background: #fff;
   backface-visibility: hidden;

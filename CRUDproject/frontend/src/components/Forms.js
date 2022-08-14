@@ -2,10 +2,8 @@ import React, { useState } from 'react'
 
 function Forms(props) {
     const [cep, setCep] = useState("");
-    const [name, setName] = useState("")
-    const [district, setDistrict] = useState("")
-    const [region, setRegion] = useState("")
-
+    
+    // handleSubmit using GET request to brasilapi
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -14,9 +12,6 @@ function Forms(props) {
           });
           let resJson = await res.json();
           if (res.status === 200) {
-            setName(resJson["street"])
-            setDistrict(resJson["neighborhood"])
-            setRegion(resJson["city"]+"/"+resJson["state"])
             makePOSTRequest(cep, resJson["street"], resJson["neighborhood"], resJson["city"]+"/"+resJson["state"])
             setCep("")
             props.setCount(count => count+1);
@@ -30,25 +25,8 @@ function Forms(props) {
         }
 
       };
-
-      
-    // function makeGETRequest() {
-    //     const requestOptions = {
-    //         method: 'POST',
-    //         headers: {'Content-Type':'application/json'},
-    //         body: JSON.stringify({
-    //             CEP: cep,
-    //             name: name,
-    //             district: district,
-    //             region: region,
-    //         }
-    //         )
-
-    //     };
-    //     fetch('http://localhost:8000/api/list', requestOptions).then((response) =>
-    //     response.json()
-    //     ).then((data)=> console.log(data));
-    // }
+    
+    // make POST request to Django REST framework to send information to database
     function makePOSTRequest(cep, name, district, region) {
         const requestOptions = {
             method: 'POST',
@@ -77,16 +55,13 @@ function Forms(props) {
         <fieldset>
             <div className="forms">
             <label>
-            {/* <p>CEP</p> */}
             <input name="CEP" value={cep} placeholder='Ex.: 12345678' 
             onChange={(e) => setCep(e.target.value)} className="input-cep"/>
             </label>
             <button type="submit" className='button-9'>Submit</button>   
             </div>
         </fieldset>
-     
         </form>
-        {/* <button onClick={makeGETRequest}>Get list</button> */}
         </div>
     )
 }

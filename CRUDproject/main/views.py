@@ -13,26 +13,10 @@ class AddressView(generics.ListAPIView):
     serializer_class = AddressSerializer
     queryset = Address.objects.all()
 
-class AddAddressView(viewsets.ViewSet):
-    serializer_class = AddAddressSerializer
-    permission_classes = (permissions.AllowAny,)
-
-    def list(self, request, format=None):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            CEP = serializer.data.get('CEP')
-            name = serializer.data.get('name')
-            district = serializer.data.get('district')
-            region = serializer.data.get('region')
-            address = Address(CEP = CEP, name = name, district = district, region = region)
-            address.save()
-            return Response(AddressSerializer(address).data, status = status.HTTP_201_CREATED)
-        return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
-
 @api_view(['GET', 'POST'])
 def addresses_list(request):
     """
-    List all addresses, or put a new address on the list.
+    List all addresses, or put a new address on the list, using api_view decorators.
     """
     if request.method == 'GET':
         snippets = Address.objects.all()
@@ -49,7 +33,7 @@ def addresses_list(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def addresses_detail(request, pk, format=None):
     """
-    Retrieve, update or delete an address.
+    Retrieve, update or delete an address, using api_view decorators.
     """
     try:
         address = Address.objects.get(pk=pk)

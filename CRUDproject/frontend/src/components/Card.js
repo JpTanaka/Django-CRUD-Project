@@ -9,8 +9,11 @@ function CardAddress(props) {
         <div className="text-content">
             <div className="title-card">
                 
-                <div className="title-cep">
-                    CEP: {props.address[1]["CEP"].substr(0,5)+"-"+props.address[1]["CEP"].substr(5,8)}
+                <div className="absolute-card-information">
+                    <div className="cep-title">
+                        CEP: {props.address[1]["CEP"].substr(0,5)+"-"+props.address[1]["CEP"].substr(5,8)}
+                    </div>
+                    
             </div>
             </div>
             {props.address[1].name}
