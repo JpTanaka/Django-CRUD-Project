@@ -1,9 +1,8 @@
 
 from django.shortcuts import render
-from rest_framework import viewsets, status, generics, permissions
+from rest_framework import status, generics
 from .models import Address
-from .serializers import AddressSerializer, AddAddressSerializer
-from rest_framework.views import APIView
+from .serializers import AddressSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
