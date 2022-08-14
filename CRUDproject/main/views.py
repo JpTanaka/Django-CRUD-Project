@@ -47,9 +47,9 @@ def addresses_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def addresses_detail(request, pk):
+def addresses_detail(request, pk, format=None):
     """
-    Retrieve, update or delete a code snippet.
+    Retrieve, update or delete an address.
     """
     try:
         address = Address.objects.get(pk=pk)
